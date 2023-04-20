@@ -1,3 +1,27 @@
 h1{
-    color: blueviolet;
+    color: #bc57d5;
+    font-family: 'Vesper Libre', serif;
+}
+
+body {
+    background-image: url("Imagenes/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%, 100%;
+    background-attachment: fixed;
+    background-position: right top;
+}
+.calculadora {
+    display: flex;
+    justify-content: center;
+}
+.Centrar{
+    text-align: center;
+    font-family: 'Vesper Libre', serif;
+}
+.btn-1{
+    display: inline-block;
+    justify-content: center;
+    background-color: #bd56d7;
+    padding: 25px 25px;
+    border-radius: 50%;
 }
