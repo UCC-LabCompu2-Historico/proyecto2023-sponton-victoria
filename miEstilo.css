@@ -26,25 +26,28 @@ body {
     float: right;
 
 }
-a:link,a:visited {
+
+a:link, a:visited {
     color: #6cd971;
 }
 
-a:hover{
+a:hover {
     font-size: 1.4em;
 }
-a:active{
+
+a:active {
     font-weight: bold;
 }
 
-.btn-2{
+.btn-2 {
     display: inline-block;
     background-color: #bd56d7;
     padding: 25px 25px;
     border-radius: 50%;
     float: none;
 }
-.btn-3{
+
+.btn-3 {
     display: inline-block;
     background-color: #bd56d7;
     padding: 25px 25px;
