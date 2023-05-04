@@ -36,3 +36,18 @@ a:hover{
 a:active{
     font-weight: bold;
 }
+
+.btn-2{
+    display: inline-block;
+    background-color: #bd56d7;
+    padding: 25px 25px;
+    border-radius: 50%;
+    float: none;
+}
+.btn-3{
+    display: inline-block;
+    background-color: #bd56d7;
+    padding: 25px 25px;
+    border-radius: 50%;
+    float: left;
+}
