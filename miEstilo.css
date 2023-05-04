@@ -1,5 +1,5 @@
-h1 {
-    color: #bc57d5;
+#tituloPrincipal {
+    color: rgb(189, 86, 215);
     font-family: 'Vesper Libre', serif;
 }
 
@@ -9,17 +9,13 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: scroll;
-
+    font-family: 'Vesper Libre', serif;
+    text-align: center;
 }
 
 .calculadora {
     display: flex;
     justify-content: center;
-}
-
-.centrar {
-    text-align: center;
-    font-family: 'Vesper Libre', serif;
 }
 
 .btn-1 {
@@ -29,4 +25,14 @@ body {
     border-radius: 50%;
     float: right;
 
+}
+a:link,a:visited {
+    color: #6cd971;
+}
+
+a:hover{
+    font-size: 1.4em;
+}
+a:active{
+    font-weight: bold;
 }

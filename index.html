@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Calculadora de perimetro</title>
@@ -11,49 +11,22 @@
     <link rel="shortcut icon" href="Imagenes/favicon.svg.png">
 
 </head>
+
 <body>
-<div class="fondo.png"></div>
-<div class="Centrar">
-    <p>
-        Elegir la figura de la cual desea saber el perimetro
-    </p>
-    <p>
-        <label for="triangulo">Triangulo </label> <input type="radio" name="figura" value="triangulo" id="Triangulo">
-    </p>
-    <p><label for="lado1"> Lado 1: </label> <input type="number" name="lado1" id="lado1"> <label for="lado2"> Lado 2:</label> <input type="number" name="lado2" id="lado2"> <label for="lado3"> Lado 3: </label> <input type="number" name="lado3" id="lado3">
-                                                                                                         name="Lado3">
-    </p>
-
-    <p>
-        <label for="rectangulo"> Rectangulo </label> <input type="radio" name="figura" value="rectangulo" id="rectangulo">
-    </p>
-    <p> <label for="base"> Base: </label> <input type="number" name="base" id="base"> <label for="altura"> Altura: </label> <input type="number" name="altura" id="altura"></p>
-
-
-    <p>
-        <label for="cuadrado"> Cuadrado </label> <input type="radio" name="figura" value="cuadrado" id="cuadrado">
-    </p>
-    <p>
-        <label for="lado">  Lado: </label> <input type="number" name="lado" id="lado">
-    </p>
-    <p>
-        <label for="circulo"> Circulo </label> <input type="radio" name="figura" value="circulo" id="circulo">
-    </p>
-    <p>
-        <label for="radio"> Radio:</label>  <input type="number" name="radio" id="radio">
-    </p>
-
-    <p>
-        <label for="insertar datos"> Insertar los datos </label>
-    </p>
-    <select id="insertar datos">
-        <option value="metros">Metros</option>
-        <option value="centimetros">Centimetros</option>
-        <option value="milimetros">Milimetros</option>
-    </select>
-    <p>
-        Resultado:
+<header>
+    <h1 id="tituloPrincipal" >CALCULADORA</h1>
+</header>
+<div class="calculadora">
+    <img src="Imagenes/calculadora_logo.png" alt="Calculadora">
+</div>
+<div>
+    <p> Es la suma de las <a href="https://concepto.de/longitud/" target="_blank">longitudes </a>de los
+        lados de cualquier <a href="https://concepto.de/figuras-geometricas/" target="_blank">figura geometrica</a>
+        plana.
     </p>
 </div>
+<nav>
+    <a href="paginaprincipal.html" class="btn-1">COMENZAR</a>
+</nav>
 </body>
 </html>

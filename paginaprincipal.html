@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de perimetro</title>
+    <meta content="Victoria Sponton" name="autor">
+    <meta content="Web de calculadora de perimetro" name="descripcion">
+    <meta content="figuras geometricas,unidades de medidas,base,altura,lado,radio" name="palabras claves">
+    <link rel="stylesheet" href="miEstilo.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="Imagenes/favicon.svg.png">
+
+</head>
+<body>
+<div class="fondo.png"></div>
+<div class="Centrar">
+    <p>
+         Elegir la figura de la cual desea saber el perimetro
+    </p>
+
+    <p>
+        <label for="triangulo">Triangulo </label> <input type="radio" name="figura" value="triangulo" id="Triangulo">
+    </p>
+    <p><label for="lado1"> Lado 1: </label> <input type="number" name="lado1" id="lado1"> <label for="lado2"> Lado
+        2:</label> <input type="number" name="lado2" id="lado2"> <label for="lado3"> Lado 3: </label> <input
+            type="number" name="lado3" id="lado3">
+
+    </p>
+
+    <p>
+        <label for="rectangulo"> Rectangulo </label> <input type="radio" name="figura" value="rectangulo"
+                                                            id="rectangulo">
+    </p>
+    <p><label for="base"> Base: </label> <input type="number" name="base" id="base"> <label for="altura">
+        Altura: </label> <input type="number" name="altura" id="altura"></p>
+
+
+    <p>
+        <label for="cuadrado"> Cuadrado </label> <input type="radio" name="figura" value="cuadrado" id="cuadrado">
+    </p>
+    <p>
+        <label for="lado"> Lado: </label> <input type="number" name="lado" id="lado">
+    </p>
+    <p>
+        <label for="circulo"> Circulo </label> <input type="radio" name="figura" value="circulo" id="circulo">
+    </p>
+    <p>
+        <label for="radio"> Radio:</label> <input type="number" name="radio" id="radio">
+    </p>
+
+    <p>
+        <label for="insertar datos"> Insertar los datos </label>
+    </p>
+    <select id="insertar datos">
+        <option value="metros">Metros</option>
+        <option value="centimetros">Centimetros</option>
+        <option value="milimetros">Milimetros</option>
+    </select>
+    <p>
+        Resultado:
+    </p>
+    <nav>
+        <a href="index.html" class="btn-1">VOLVER</a>
+    </nav>
+</div>
+</body>
+</html>
