@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de perímetro</title>
+    <meta content="Victoria Sponton" name="autor">
+    <meta content="Web de calculadora de perímetro" name="descripción">
+    <meta content="figuras geométricas,unidades de medidas,base,altura,lado,radio" name="palabras claves">
+    <link rel="stylesheet" href="miEstilo.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="Imagenes/favicon.svg.png">
+    <script type="text/javascript" src="funciones.js"></script>
+
+</head>
+<body>
+<div class="fondo.png"></div>
+<div class="Centrar">
+    <div>
+        <p>
+            <strong>Elegir la figura de la cual desea saber el perimetro</strong>
+        </p>
+
+        <p>
+
+            <label for="Triangulo">Triangulo </label> <input type="radio" name="figura" value="Triangulo" id="Triangulo"
+                                                             onclick="mostrar_ocultar(this.value)">
+            <label for="Rectangulo"> Rectangulo </label> <input type="radio" name="figura" value="Rectangulo"
+                                                                id="Rectangulo" onclick="mostrar_ocultar(this.value)">
+            <label for="Cuadrado"> Cuadrado </label> <input type="radio" name="figura" value="Cuadrado" id="Cuadrado"
+                                                            onclick="mostrar_ocultar(this.value)">
+            <label for="Circulo"> Circulo </label> <input type="radio" name="figura" value="Circulo" id="Circulo"
+                                                          onclick="mostrar_ocultar(this.value)">
+        </p>
+    </div>
+
+    <div id="perimetro_Triangulo" onchange="PerimetroTrian()">
+        <p>
+            <label for="Lado1"> Lado 1: </label> <input type="text" name="Lado1" id="Lado1"> <label for="Lado2"> Lado
+            2:</label> <input type="text" name="Lado2" id="Lado2"> <label for="Lado3">
+            Lado 3: </label> <input type="text" name="Lado3" id="Lado3">
+        </p>
+    </div>
+
+
+    <div id="perimetro_Rectangulo" onchange="PerimetroRec()">
+        <p>
+            <label for="Base"> Base: </label> <input type="text" name="Base" id="Base"> <label for="Altura">
+            Altura: </label> <input type="text" name="Altura" id="Altura">
+        </p>
+
+    </div>
+
+
+    <div id="perimetro_Cuadrado" onchange="PerimetroCuad()">
+        <p>
+            <label for="Lado"> Lado: </label> <input type="text" name="Lado" id="Lado">
+        </p>
+    </div>
+
+
+    <div id="perimetro_Circulo" onchange="PerimetroCirc()">
+        <p>
+            <label for="Radio"> Radio:</label> <input type="text" name="Radio" id="Radio">
+        </p>
+    </div>
+
+    <p>
+        <label for="Insertar datos"> Insertar los datos </label>
+    </p>
+
+    <select id="Insertar datos">
+        <option value="Metros">Metros</option>
+        <option value="Centímetros">Centímetros</option>
+        <option value="Milímetros">Milímetros</option>
+    </select>
+    <nav>
+        <a class="btn-2">CALCULAR</a>
+    </nav>
+    <p>
+        RESULTADO:<input type="text" name="resultado" id="Resultado"  onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc()"  disabled>
+
+    </p>
+    <nav>
+        <a href="páginaprincipal.html" class="btn-3">REINICIAR</a>
+    </nav>
+    <canvas></canvas>
+    <nav>
+        <a href="index.html" class="btn-1">VOLVER</a>
+    </nav>
+
+</div>
+</body>
+</html>

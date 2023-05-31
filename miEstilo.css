@@ -54,3 +54,9 @@ a:active {
     border-radius: 50%;
     float: left;
 }
+
+#perimetro_Triangulo{display: none}
+#perimetro_Rectangulo{display: none}
+#perimetro_Cuadrado{display: none}
+#perimetro_Circulo{display: none}
+
