@@ -6,7 +6,7 @@
  */
 function mostrar_ocultar(valor){
     document.getElementById("perimetro_Triangulo").style.display = "none";
-    document.getElementById("perimetro_Cuadradoo").style.display = "none";
+    document.getElementById("perimetro_Cuadrado").style.display = "none";
     document.getElementById("perimetro_Rectangulo").style.display = "none";
     document.getElementById("perimetro_Circulo").style.display = "none";
     if (valor === "Triangulo") {
@@ -106,6 +106,7 @@ function PerimetroCuad() {
 
 
     }
+
     DibujarCuadrado();
 }
 
@@ -135,6 +136,8 @@ function PerimetroCirc() {
 
     DibujarCirculo();
 }
+
+
 /**
  * Función que permite dibujar un triángulo según la longitud de sus tres lados
  * @method DibujarTriangulo
@@ -184,7 +187,7 @@ function DibujarRectangulo(){
     base=localStorage.getItem("Base")*0.1;
     altura=localStorage.getItem("Altura")*0.1;
     canvas.width = canvas.width;
-    ctx.fillStyle = "#572f84";
+    ctx.fillStyle = "#bc57d5";
     ctx.fillRect(Posicionx, 0 + margen, 100*base, 100*altura);
     Posicionx=Posicionx+10;
     if(Posicionx>canvas.width)
@@ -206,7 +209,7 @@ function DibujarCuadrado(Lado){
     var lado;
     lado=localStorage.getItem("Lado")*0.1;
     canvas.width = canvas.width;
-    ctx.fillStyle = "#87367e";
+    ctx.fillStyle = "#bc57d5";
     ctx.fillRect(Posicionx, 0 + margen, 100*lado, 100*lado);
     Posicionx=Posicionx+10;
     if(Posicionx>canvas.width)
@@ -222,23 +225,20 @@ function DibujarCuadrado(Lado){
  * @param Radio - El radio ingresado por el usuario
  * @return {canvas} dibujo de la figura geométrica
  */
-function DibujarCirculo(){
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    //var xmax = canvas.width;
-    var ymax = canvas.height;
-    var radio;
-    radio=localStorage.getItem("Radio")*0.1;
-    canvas.width = canvas.width;
-    ctx.arc(Posicionx, ymax / 2, 20*radio, 0, 2 * Math.PI);
-    ctx.fillStyle = "#87367e";
-    ctx.fill();
-    ctx.stroke();
-    Posicionx=Posicionx+10;
-    if(Posicionx>canvas.width)
-    {
-        Posicionx=0;
-    }
-    ctx.stroke();
 
+
+function DibujarCirculo(radio) {
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    // Establecer el tamaño del canvas
+    canvas.width = radio * 2;
+    canvas.height = radio * 2;
+
+    // Dibujar el círculo
+    ctx.beginPath();
+    ctx.arc(radio, radio, radio, 0, 2 * Math.PI);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'black';
+    ctx.stroke();
 }
