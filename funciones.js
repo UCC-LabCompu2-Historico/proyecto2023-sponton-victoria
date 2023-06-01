@@ -148,29 +148,40 @@ function PerimetroCirc() {
  */
 
 Posicionx=0;
-function DibujarTriangulo(){
-    var Lado1, Lado2, Lado3;
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    canvas.width = canvas.width;
-    var anchoMax;
-    Lado1 = localStorage.getItem("Lado1");
-    Lado1 = localStorage.getItem("Lado2");
-    Lado3 = localStorage.getItem("Lado3");
-    anchoMax=canvas.width;
-    ctx.beginPath();
-    ctx.moveTo(100+Posicionx, 100);
-    ctx.lineTo(Base/2+Posicionx,Altura);
-    ctx.lineTo(Base+Posicionx,100);
-    ctx.closePath();
-    ctx.strokeStyle = "#bc57d5";
-    ctx.stroke();
-    Posicionx=Posicionx+10;
-    if(Posicionx>canvas.width)
-    {
-        Posicionx=0;
+function DibujarTriangulo(lado1, lado2, lado3) {
+    var canvas = document.getElementById('miCanvas');
+    var ctx = canvas.getContext('2d');
+
+    // Verificar si los lados forman un triángulo válido
+    if (lado1 + lado2 <= lado3 || lado1 + lado3 <= lado2 || lado2 + lado3 <= lado1) {
+        console.log('Los lados ingresados no forman un triángulo válido.');
+        return;
     }
+
+    // Calcular los ángulos del triángulo
+    var angulo1 = Math.acos((lado2 * lado2 + lado3 * lado3 - lado1 * lado1) / (2 * lado2 * lado3));
+    var angulo2 = Math.acos((lado1 * lado1 + lado3 * lado3 - lado2 * lado2) / (2 * lado1 * lado3));
+
+    // Convertir los ángulos de radianes a grados
+    angulo1 = angulo1 * (180 / Math.PI);
+    angulo2 = angulo2 * (180 / Math.PI);
+
+    // Establecer el tamaño del canvas
+    canvas.width = lado1 + lado2 + lado3;
+    canvas.height = Math.max(lado1, lado2, lado3) + 20;
+
+    // Dibujar el triángulo
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(lado1, 0);
+    ctx.lineTo(lado2 * Math.cos(angulo1 * (Math.PI / 180)), lado2 * Math.sin(angulo1 * (Math.PI / 180)));
+    ctx.closePath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'black';
+    ctx.stroke();
 }
+
+
 /**
  * Función que permite dibujar un rectángulo según la longitud de su Base y Altura
  * @method DibujarRectangulo
