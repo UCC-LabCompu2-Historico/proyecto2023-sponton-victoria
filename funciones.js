@@ -7,7 +7,7 @@
 function mostrar_ocultar(valor){
     document.getElementById("perimetro_Triangulo").style.display = "none";
     document.getElementById("perimetro_Cuadrado").style.display = "none";
-    document.getElementById("perimetro_Rectangulo").style.display = "none";
+    document.getElementById("perimetro_Rectángulo").style.display = "none";
     document.getElementById("perimetro_Circulo").style.display = "none";
     if (valor === "Triangulo") {
         document.getElementById("perimetro_Triangulo").style.display = 'block';
@@ -15,8 +15,8 @@ function mostrar_ocultar(valor){
         document.getElementById("perimetro_Cuadrado").style.display = 'block';
     }  else if (valor === "Circulo") {
         document.getElementById("perimetro_Circulo").style.display = 'block';
-    } else if (valor === "Rectangulo") {
-        document.getElementById("perimetro_Rectangulo").style.display = 'block';
+    } else if (valor === "Rectángulo") {
+        document.getElementById("perimetro_Rectángulo").style.display = 'block';
     }
 }
 
@@ -91,7 +91,7 @@ function PerimetroRec() {
         localStorage.setItem("Altura",Altura);
 
     }
-    DibujarRectangulo(Base,Altura);
+    DibujarRectángulo(Base,Altura);
 }
 
 /**
@@ -156,7 +156,7 @@ function PerimetroCirc() {
 /**
  * Función que permite cambiar que el resultado cambie segun la unidad que se elige
  * @method CambiarUnidades
- * @param Valor-
+ * @param valor-
  * @param Resultado- Resultado del perimetro de la figura
  * @return Resultado
  */
@@ -218,13 +218,13 @@ function DibujarTriangulo(lado1, lado2, lado3) {
 
 /**
  * Función que permite dibujar un rectángulo según la longitud de su Base y Altura
- * @method DibujarRectangulo
+ * @method DibujarRectángulo
  * @param Base - La base ingresada por el usuario
  * @param Altura - La altura ingresada por el usuario
  * @return {canvas} dibujo de la figura geométrica
  */
 
-function DibujarRectangulo(){
+function DibujarRectángulo(){
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d")
     var margen=50;
