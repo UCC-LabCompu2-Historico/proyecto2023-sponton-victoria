@@ -45,7 +45,7 @@ function PerimetroTrian() {
 
     }
     if(Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)){
-        document.getElementById("Resultado").value = Lado1 + Lado2 + Lado3;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,Lado1 + Lado2 + Lado3) ;
         localStorage.setItem("Lado1",Lado1);
         localStorage.setItem("Lado2",Lado2);
         localStorage.setItem("Lado3",Lado3);
@@ -75,7 +75,7 @@ function PerimetroRec() {
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
     }
     if(Base > 0 && Altura > 0  && !isNaN(Base) && !isNaN(Altura)){
-        document.getElementById("Resultado").value = 2*Base + 2*Altura;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,2*Base + 2*Altura) ;
         localStorage.setItem("Base",Base);
         localStorage.setItem("Altura",Altura);
 
@@ -103,7 +103,7 @@ function PerimetroCuad() {
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
     }
     if(Lado > 0  && !isNaN(Lado)){
-        document.getElementById("Resultado").value = 4*Lado;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,4*Lado) ;
         localStorage.setItem("Lado",Lado);
 
 
@@ -130,7 +130,7 @@ function PerimetroCirc() {
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
     }
     if(Radio > 0  && !isNaN(Radio)){
-        document.getElementById("Resultado").value = 2* Math.PI*Radio ;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,2* Math.PI*Radio)  ;
         localStorage.setItem("Radio",Radio);
 
 
@@ -138,8 +138,15 @@ function PerimetroCirc() {
 
     DibujarCirculo(Radio);
 }
+/**
+ * Función que permite cambiar que el resultado cambie segun la unidad que se elige
+ * @method CambiarUnidades
+ * @param Valor-
+ * @param Resultado- Resultado del perimetro de la figura
+ * @return Resultado
+ */
 
-function CambiarUnidades(valor) {
+function CambiarUnidades(valor,Resultado) {
     if(valor === "Metros"){
         Resultado = Resultado + "Metros"
     }else if(valor === "Centimetros"){
@@ -147,6 +154,7 @@ function CambiarUnidades(valor) {
     }else if (valor==="Milimetros"){
         Resultado * 1000 + "Milimetros";
     }
+    return Resultado;
 }
 
 /**
