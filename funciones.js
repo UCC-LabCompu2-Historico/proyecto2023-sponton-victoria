@@ -38,9 +38,11 @@ function PerimetroTrian() {
 
     if(Lado1< 0 || Lado2 < 0 || Lado3 < 0 ){
         alert("Se ingresó un valor incorrecto");
+
     }
     if (isNaN(Lado1)|| isNaN(Lado2)|| isNaN(Lado3)){
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
+
     }
     if(Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)){
         document.getElementById("Resultado").value = Lado1 + Lado2 + Lado3;
@@ -48,7 +50,7 @@ function PerimetroTrian() {
         localStorage.setItem("Lado2",Lado2);
         localStorage.setItem("Lado3",Lado3);
     }
-    DibujarTriangulo();
+    DibujarTriangulo(Lado1,Lado2,Lado3);
 }
 
 /**
@@ -78,7 +80,7 @@ function PerimetroRec() {
         localStorage.setItem("Altura",Altura);
 
     }
-    DibujarRectangulo();
+    DibujarRectangulo(Base,Altura);
 }
 
 /**
@@ -107,7 +109,7 @@ function PerimetroCuad() {
 
     }
 
-    DibujarCuadrado();
+    DibujarCuadrado(Lado);
 }
 
 /**
@@ -134,9 +136,18 @@ function PerimetroCirc() {
 
     }
 
-    DibujarCirculo();
+    DibujarCirculo(Radio);
 }
 
+function CambiarUnidades(valor) {
+    if(valor === "Metros"){
+        Resultado = Resultado + "Metros"
+    }else if(valor === "Centimetros"){
+        Resultado * 100 + "Metros";
+    }else if (valor==="Milimetros"){
+        Resultado * 1000 + "Milimetros";
+    }
+}
 
 /**
  * Función que permite dibujar un triángulo según la longitud de sus tres lados
@@ -193,7 +204,6 @@ function DibujarTriangulo(lado1, lado2, lado3) {
 function DibujarRectangulo(){
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d")
-    var base, altura;
     var margen=50;
     base=localStorage.getItem("Base")*0.1;
     altura=localStorage.getItem("Altura")*0.1;
@@ -217,7 +227,6 @@ function DibujarCuadrado(Lado){
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var margen = 50;
-    var lado;
     lado=localStorage.getItem("Lado")*0.1;
     canvas.width = canvas.width;
     ctx.fillStyle = "#bc57d5";
@@ -250,6 +259,7 @@ function DibujarCirculo(radio) {
     ctx.beginPath();
     ctx.arc(radio, radio, radio, 0, 2 * Math.PI);
     ctx.lineWidth = 1;
-    ctx.strokeStyle = 'black';
+    ctx.fillStyle = "#bc57d5";
+    ctx.fill();
     ctx.stroke();
 }
