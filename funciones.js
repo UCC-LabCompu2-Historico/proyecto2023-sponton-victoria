@@ -38,10 +38,15 @@ function PerimetroTrian() {
 
     if(Lado1< 0 || Lado2 < 0 || Lado3 < 0 ){
         alert("Se ingresó un valor incorrecto");
-
+        document.Formulario.Lado1.value = "";
+        document.Formulario.Lado2.value = "";
+        document.Formulario.Lado3.value = "";
     }
     if (isNaN(Lado1)|| isNaN(Lado2)|| isNaN(Lado3)){
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
+        document.Formulario.Lado1.value = "";
+        document.Formulario.Lado2.value = "";
+        document.Formulario.Lado3.value = "";
 
     }
     if(Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)){
@@ -70,9 +75,15 @@ function PerimetroRec() {
 
     if(Base < 0 || Altura  < 0 ){
         alert("Se ingresó un valor incorrecto");
+        document.Formulario.Base.value = "";
+        document.Formulario.Altura.value = "";
+
     }
     if (isNaN(Base)|| isNaN(Altura)){
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
+        document.Formulario.Base.value = "";
+        document.Formulario.Altura.value = "";
+
     }
     if(Base > 0 && Altura > 0  && !isNaN(Base) && !isNaN(Altura)){
         document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,2*Base + 2*Altura) ;
@@ -98,9 +109,11 @@ function PerimetroCuad() {
 
     if(Lado < 0 ){
         alert("Se ingresó un valor incorrecto");
+        document.Formulario.Lado.value = "";
     }
     if (isNaN(Lado)){
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
+        document.Formulario.Lado.value = "";
     }
     if(Lado > 0  && !isNaN(Lado)){
         document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,4*Lado) ;
@@ -125,9 +138,11 @@ function PerimetroCirc() {
 
     if(Radio < 0 ){
         alert("Se ingresó un valor incorrecto");
+        document.Formulario.Radio.value = "";
     }
     if (isNaN(Radio)){
         alert("Se ingresó un valor incorrecto.Deben ser numeros");
+        document.Formulario.Radio.value = "";
     }
     if(Radio > 0  && !isNaN(Radio)){
         document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,2* Math.PI*Radio)  ;
