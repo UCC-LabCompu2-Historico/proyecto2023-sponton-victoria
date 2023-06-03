@@ -27,8 +27,8 @@
             <label for="Triangulo">Triangulo </label> <input type="radio" name="figura" value="Triangulo" id="Triangulo"
                                                              onclick="mostrar_ocultar(this.value)">
 
-            <label for="Rectángulo"> Rectángulo </label> <input type="radio" name="figura" value="Rectángulo"
-                                                                id="Rectángulo" onclick="mostrar_ocultar(this.value)">
+            <label for="Rectangulo"> Rectángulo </label> <input type="radio" name="figura" value="Rectangulo"
+                                                                id="Rectangulo" onclick="mostrar_ocultar(this.value)">
 
 
             <label for="Cuadrado"> Cuadrado </label> <input type="radio" name="figura" value="Cuadrado" id="Cuadrado"
@@ -49,7 +49,7 @@
     </div>
 
 
-    <div id="perimetro_Rectángulo" onchange="PerimetroRec()">
+    <div id="perimetro_Rectangulo" onchange="PerimetroRec()">
         <p>
             <label for="Base"> Base: </label> <input type="text" name="Base" id="Base"> <label for="Altura">
             Altura: </label> <input type="text" name="Altura" id="Altura">
@@ -84,11 +84,11 @@
 
 
     <nav>
-        <a class="btn-2" onclick="CambiarUnidades">CALCULAR  </a>
+        <button class="btn-2" onclick="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();CambiarUnidades()"> CALCULAR </button>
 
     </nav>
     <p>
-        RESULTADO:<input type="text" name="resultado" id="Resultado"  onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();"  disabled>
+        RESULTADO:<input type="text" name="resultado" id="Resultado"  onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();CambiarUnidades();"  disabled>
 
     </p>
     <nav>

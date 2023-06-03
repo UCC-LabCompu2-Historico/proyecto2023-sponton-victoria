@@ -7,7 +7,7 @@
 function mostrar_ocultar(valor){
     document.getElementById("perimetro_Triangulo").style.display = "none";
     document.getElementById("perimetro_Cuadrado").style.display = "none";
-    document.getElementById("perimetro_Rectángulo").style.display = "none";
+    document.getElementById("perimetro_Rectangulo").style.display = "none";
     document.getElementById("perimetro_Circulo").style.display = "none";
     if (valor === "Triangulo") {
         document.getElementById("perimetro_Triangulo").style.display = 'block';
@@ -15,8 +15,8 @@ function mostrar_ocultar(valor){
         document.getElementById("perimetro_Cuadrado").style.display = 'block';
     }  else if (valor === "Circulo") {
         document.getElementById("perimetro_Circulo").style.display = 'block';
-    } else if (valor === "Rectángulo") {
-        document.getElementById("perimetro_Rectángulo").style.display = 'block';
+    } else if (valor === "Rectangulo") {
+        document.getElementById("perimetro_Rectangulo").style.display = 'block';
     }
 }
 
@@ -52,7 +52,7 @@ function PerimetroTrian() {
         document.Formulario.Lado3.value = "";
         }
         if(Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)){
-        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,Lado1 + Lado2 + Lado3) ;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Triangulo").value,Lado1 + Lado2 + Lado3) ;
         localStorage.setItem("Lado1",Lado1);
         localStorage.setItem("Lado2",Lado2);
         localStorage.setItem("Lado3",Lado3);
@@ -90,7 +90,7 @@ function PerimetroRec() {
         }
 
         if(Base > 0 && Altura > 0  && !isNaN(Base) && !isNaN(Altura)){
-        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,2*Base + 2*Altura) ;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Rectangulo").value,2*Base + 2*Altura) ;
         localStorage.setItem("Base",Base);
         localStorage.setItem("Altura",Altura);
         }
@@ -120,7 +120,7 @@ function PerimetroCuad() {
         document.Formulario.Lado.value = "";
         }
         if(Lado > 0  && !isNaN(Lado)){
-        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,4*Lado) ;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Cuadrado").value,4*Lado) ;
         localStorage.setItem("Lado",Lado);
 
         }
@@ -149,12 +149,14 @@ function PerimetroCirc() {
         document.Formulario.Radio.value = "";
         }
         if(Radio > 0  && !isNaN(Radio)){
-        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("Insertar datos").value,2* Math.PI*Radio)  ;
+        document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Circulo").value,2* Math.PI*Radio)  ;
         localStorage.setItem("Radio",Radio);
         }
         DibujarCirculo(Radio);
     }
 }
+
+
 /**
  * Función que permite cambiar que el resultado cambie segun la unidad que se elige
  * @method CambiarUnidades
@@ -164,12 +166,12 @@ function PerimetroCirc() {
  */
 
 function CambiarUnidades(valor,Resultado) {
-    if(valor === "Metros"){
-        Resultado = Resultado + "Metros"
-    }else if(valor === "Centimetros"){
-        Resultado * 100 + "Metros";
-    }else if (valor==="Milimetros"){
-        Resultado * 1000 + "Milimetros";
+
+     if(valor === "Centimetros"){
+        Resultado= Resultado * 100;
+    }
+     if (valor==="Milimetros"){
+        Resultado = Resultado * 1000 ;
     }
     return Resultado;
 }
