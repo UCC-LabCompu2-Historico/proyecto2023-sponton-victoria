@@ -9,6 +9,8 @@ Link al sitio: [Proyecto de Calculadora de Perímetro](https://ucc-labcompu2.git
 ## Tecnologías Usadas
 * HTML5
 * CSS3
+* Javascript
+
 
 ## Requisitos del Primer Parcial
 

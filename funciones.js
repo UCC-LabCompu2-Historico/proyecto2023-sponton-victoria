@@ -38,14 +38,14 @@ function PerimetroTrian() {
         Lado2 = Number(Lado2.replace(",", "."));
         Lado3 = Number(Lado3.replace(",", "."));
 
-        limpiarCanvas();
 
         if (Lado1 < 0 || Lado2 < 0 || Lado3 < 0) {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Lado1.value = "";
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
 
 
@@ -54,7 +54,8 @@ function PerimetroTrian() {
             document.Formulario.Lado1.value = "";
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
 
         if (Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)) {
@@ -62,8 +63,9 @@ function PerimetroTrian() {
             localStorage.setItem("Lado1", Lado1);
             localStorage.setItem("Lado2", Lado2);
             localStorage.setItem("Lado3", Lado3);
+            DibujarTriangulo(Lado1, Lado2, Lado3);
         }
-        DibujarTriangulo(Lado1, Lado2, Lado3);
+
     }
 }
 
@@ -87,22 +89,25 @@ function PerimetroRec() {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Base.value = "";
             document.Formulario.Altura.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
 
         if (isNaN(Base) || isNaN(Altura)) {
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.Base.value = "";
             document.Formulario.Altura.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
 
         if (Base > 0 && Altura > 0 && !isNaN(Base) && !isNaN(Altura)) {
             document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Rectangulo").value, 2 * Base + 2 * Altura);
             localStorage.setItem("Base", Base);
             localStorage.setItem("Altura", Altura);
+            DibujarRectangulo(Base, Altura);
         }
-        DibujarRectangulo(Base, Altura);
+
     }
 }
 
@@ -122,19 +127,21 @@ function PerimetroCuad() {
         if (Lado < 0) {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Lado.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
         if (isNaN(Lado)) {
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.Lado.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
         if (Lado > 0 && !isNaN(Lado)) {
             document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Cuadrado").value, 4 * Lado);
             localStorage.setItem("Lado", Lado);
-
+            DibujarCuadrado(Lado);
         }
-        DibujarCuadrado(Lado);
+
     }
 }
 
@@ -153,18 +160,21 @@ function PerimetroCirc() {
         if (Radio < 0) {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Radio.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
         if (isNaN(Radio)) {
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.Radio.value = "";
-            limpiarCanvas();
+            //Permite limpiar el canvas
+            canvas.width = canvas.width;
         }
         if (Radio > 0 && !isNaN(Radio)) {
-            document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Circulo").value, 2 * Math.PI * Radio);
+            document.getElementById("Resultado").value = 2 * Math.PI * Radio;
             localStorage.setItem("Radio", Radio);
+            DibujarCirculo(Radio);
         }
-        DibujarCirculo(Radio);
+
     }
 }
 
@@ -178,12 +188,16 @@ function PerimetroCirc() {
  */
 
 function CambiarUnidades(valor, Resultado) {
-
-    if (valor === "Centimetros") {
-        Resultado = Resultado * 100;
+    console.log(valor);
+    console.log(Resultado);
+    if (valor === "Metros" || valor === undefined) {
+        document.getElementById("Resultado").value = Resultado + "Metros";
     }
-    if (valor === "Milimetros") {
-        Resultado = Resultado * 1000;
+    if (valor === "Centímetros") {
+        document.getElementById("Resultado").value = Resultado + " Centímetros";
+    }
+    if (valor === "Milímetros") {
+        document.getElementById("Resultado").value = Resultado + " Milímetros";
     }
     return Resultado;
 }
@@ -201,17 +215,20 @@ Posicionx = 0;
 function DibujarTriangulo(lado1, lado2, lado3) {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+    if (lado1 && lado2 && lado3) {
+        // Verificar si los lados forman un triángulo válido
+        if (lado1 + lado2 <= lado3 || lado1 + lado3 <= lado2 || lado2 + lado3 <= lado1) {
+            alert("Los lados ingresados no forman un triángulo válido.");
+            document.Formulario.Lado1.value = "";
+            document.Formulario.Lado2.value = "";
+            document.Formulario.Lado3.value = "";
+            console.log("Los lados ingresados no forman un triángulo válido.");
 
-    // Verificar si los lados forman un triángulo válido
-    if (lado1 + lado2 <= lado3 || lado1 + lado3 <= lado2 || lado2 + lado3 <= lado1) {
-        alert("Los lados ingresados no forman un triángulo válido.");
-        document.Formulario.Lado1.value = "";
-        document.Formulario.Lado2.value = "";
-        document.Formulario.Lado3.value = "";
-        console.log("Los lados ingresados no forman un triángulo válido.");
+            return;
+        }
 
-        return;
     }
+
 
     // Calcular los ángulos del triángulo
     let angulo1 = Math.acos((lado2 * lado2 + lado3 * lado3 - lado1 * lado1) / (2 * lado2 * lado3));
@@ -267,9 +284,9 @@ function DibujarRectangulo() {
  * @return {canvas} dibujo de la figura geométrica
  */
 function DibujarCuadrado(Lado) {
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    var margen = 50;
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const margen = 50;
     Lado = localStorage.getItem("Lado") * 0.1;
     canvas.width = canvas.width;
     ctx.fillStyle = "#bc57d5";
@@ -305,13 +322,4 @@ function DibujarCirculo(radio) {
     ctx.fill();
     ctx.stroke();
 }
-/**
- * Función que permite limpiar el canvas
- * @method limpiarCanvas
- * @return {canvas} canvas limpio
- */
-function limpiarCanvas() {
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = canvas.width;
-}
+

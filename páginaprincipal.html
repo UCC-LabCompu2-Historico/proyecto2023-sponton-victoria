@@ -45,7 +45,8 @@
 
         <div id="perimetro_Triangulo" onchange="PerimetroTrian()">
             <p>
-                <label for="Lado1"> Lado 1: </label> <input type="text" name="Lado1" id="Lado1" maxlength="8"> <label for="Lado2">
+                <label for="Lado1"> Lado 1: </label> <input type="text" name="Lado1" id="Lado1" maxlength="8"> <label
+                    for="Lado2">
                 Lado
                 2:</label> <input type="text" name="Lado2" id="Lado2" maxlength="8"> <label for="Lado3">
                 Lado 3: </label> <input type="text" name="Lado3" id="Lado3" maxlength="8">
@@ -55,7 +56,8 @@
 
         <div id="perimetro_Rectangulo" onchange="PerimetroRec()">
             <p>
-                <label for="Base"> Base: </label> <input type="text" name="Base" id="Base" maxlength="8"> <label for="Altura">
+                <label for="Base"> Base: </label> <input type="text" name="Base" id="Base" maxlength="8"> <label
+                    for="Altura">
                 Altura: </label> <input type="text" name="Altura" id="Altura" maxlength="8">
             </p>
 
@@ -79,17 +81,16 @@
             <label for="Insertar datos"> Insertar los datos </label>
         </p>
 
-        <select id="Insertar datos">
+        <select id="Insertar datos" onchange="CambiarUnidades(this.value,resultado.value)">
             <option value="Metros">Metros</option>
             <option value="Centímetros">Centímetros</option>
             <option value="Milímetros">Milímetros</option>
         </select>
 
 
-
         <p>
             RESULTADO:<input type="text" name="resultado" id="Resultado"
-                             onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();CambiarUnidades();"
+                             onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc()"
                              disabled>
 
         </p>
