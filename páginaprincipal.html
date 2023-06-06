@@ -16,89 +16,91 @@
 <div class="fondo.png"></div>
 <div class="Centrar">
     <form name="Formulario">
-    <div>
+        <div>
+
+            <p>
+                <strong>Elegir la figura de la cual desea saber el perimetro</strong>
+            </p>
+
+            <p>
+
+                <label for="Triangulo">Triángulo </label> <input type="radio" name="figura" value="Triangulo"
+                                                                 id="Triangulo"
+                                                                 onclick="mostrar_ocultar(this.value)">
+
+                <label for="Rectangulo"> Rectángulo </label> <input type="radio" name="figura" value="Rectangulo"
+                                                                    id="Rectangulo"
+                                                                    onclick="mostrar_ocultar(this.value)">
+
+
+                <label for="Cuadrado"> Cuadrado </label> <input type="radio" name="figura" value="Cuadrado"
+                                                                id="Cuadrado"
+                                                                onclick="mostrar_ocultar(this.value)">
+
+
+                <label for="Circulo"> Círculo </label> <input type="radio" name="figura" value="Circulo" id="Circulo"
+                                                              onclick="mostrar_ocultar(this.value)">
+            </p>
+        </div>
+
+        <div id="perimetro_Triangulo" onchange="PerimetroTrian()">
+            <p>
+                <label for="Lado1"> Lado 1: </label> <input type="text" name="Lado1" id="Lado1" maxlength="8"> <label for="Lado2">
+                Lado
+                2:</label> <input type="text" name="Lado2" id="Lado2" maxlength="8"> <label for="Lado3">
+                Lado 3: </label> <input type="text" name="Lado3" id="Lado3" maxlength="8">
+            </p>
+        </div>
+
+
+        <div id="perimetro_Rectangulo" onchange="PerimetroRec()">
+            <p>
+                <label for="Base"> Base: </label> <input type="text" name="Base" id="Base" maxlength="8"> <label for="Altura">
+                Altura: </label> <input type="text" name="Altura" id="Altura" maxlength="8">
+            </p>
+
+        </div>
+
+
+        <div id="perimetro_Cuadrado" onchange="PerimetroCuad()">
+            <p>
+                <label for="Lado"> Lado: </label> <input type="text" name="Lado" id="Lado" maxlength="8">
+            </p>
+        </div>
+
+
+        <div id="perimetro_Circulo" onchange="PerimetroCirc()">
+            <p>
+                <label for="Radio"> Radio:</label> <input type="text" name="Radio" id="Radio" maxlength="8">
+            </p>
+        </div>
 
         <p>
-            <strong>Elegir la figura de la cual desea saber el perimetro</strong>
+            <label for="Insertar datos"> Insertar los datos </label>
         </p>
+
+        <select id="Insertar datos">
+            <option value="Metros">Metros</option>
+            <option value="Centímetros">Centímetros</option>
+            <option value="Milímetros">Milímetros</option>
+        </select>
+
+
 
         <p>
+            RESULTADO:<input type="text" name="resultado" id="Resultado"
+                             onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();CambiarUnidades();"
+                             disabled>
 
-            <label for="Triangulo">Triangulo </label> <input type="radio" name="figura" value="Triangulo" id="Triangulo"
-                                                             onclick="mostrar_ocultar(this.value)">
-
-            <label for="Rectangulo"> Rectángulo </label> <input type="radio" name="figura" value="Rectangulo"
-                                                                id="Rectangulo" onclick="mostrar_ocultar(this.value)">
-
-
-            <label for="Cuadrado"> Cuadrado </label> <input type="radio" name="figura" value="Cuadrado" id="Cuadrado"
-                                                            onclick="mostrar_ocultar(this.value)">
-
-
-            <label for="Circulo"> Circulo </label> <input type="radio" name="figura" value="Circulo" id="Circulo"
-                                                          onclick="mostrar_ocultar(this.value)">
         </p>
-    </div>
-
-    <div id="perimetro_Triangulo" onchange="PerimetroTrian()">
-        <p>
-            <label for="Lado1"> Lado 1: </label> <input type="text" name="Lado1" id="Lado1"> <label for="Lado2"> Lado
-            2:</label> <input type="text" name="Lado2" id="Lado2"> <label for="Lado3">
-            Lado 3: </label> <input type="text" name="Lado3" id="Lado3">
-        </p>
-    </div>
-
-
-    <div id="perimetro_Rectangulo" onchange="PerimetroRec()">
-        <p>
-            <label for="Base"> Base: </label> <input type="text" name="Base" id="Base"> <label for="Altura">
-            Altura: </label> <input type="text" name="Altura" id="Altura">
-        </p>
-
-    </div>
-
-
-    <div id="perimetro_Cuadrado" onchange="PerimetroCuad()">
-        <p>
-            <label for="Lado"> Lado: </label> <input type="text" name="Lado" id="Lado">
-        </p>
-    </div>
-
-
-    <div id="perimetro_Circulo" onchange="PerimetroCirc()">
-        <p>
-            <label for="Radio"> Radio:</label> <input type="text" name="Radio" id="Radio">
-        </p>
-    </div>
-
-    <p>
-        <label for="Insertar datos"> Insertar los datos </label>
-    </p>
-
-    <select id="Insertar datos">
-        <option value="Metros">Metros</option>
-        <option value="Centímetros">Centímetros</option>
-        <option value="Milímetros">Milímetros</option>
-    </select>
-
-
-
-    <nav>
-        <button class="btn-2" onclick="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();CambiarUnidades()"> CALCULAR </button>
-
-    </nav>
-    <p>
-        RESULTADO:<input type="text" name="resultado" id="Resultado"  onchange="PerimetroTrian();PerimetroRec();PerimetroCuad();PerimetroCirc();CambiarUnidades();"  disabled>
-
-    </p>
-    <nav>
-        <a href="páginaprincipal.html" class="btn-3">REINICIAR</a>
-    </nav>
-    <canvas id="canvas" width="800px" height="600px">
-    </canvas>
-    <nav>
-        <a href="index.html" class="btn-1">VOLVER</a>
-    </nav>
+        <nav>
+            <a href="páginaprincipal.html" class="btn-3">REINICIAR</a>
+        </nav>
+        <canvas id="canvas" width="800px" height="600px">
+        </canvas>
+        <nav>
+            <a href="index.html" class="btn-1">VOLVER</a>
+        </nav>
 
     </form>
 </div>

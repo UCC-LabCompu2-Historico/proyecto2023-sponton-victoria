@@ -1,7 +1,7 @@
 # Calculadora de Perímetro
 Esta página calcula el perímetro de figuras geométricas.
 
-Link al sitio: [Proyecto de Calculadora de Perimetro](https://ucc-labcompu2.github.io/proyecto2023-sponton-victoria/)
+Link al sitio: [Proyecto de Calculadora de Perímetro](https://ucc-labcompu2.github.io/proyecto2023-sponton-victoria/)
 
 ## Autores
 * Sponton, Victoria
