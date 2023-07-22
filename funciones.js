@@ -22,7 +22,7 @@ function mostrar_ocultar(valor) {
 
 /**
  * Función que permite calcular el perímetro del Triángulo
- * @method CalculodePerimetro
+ * @method PerimetroTrian
  * @return {number} Resultado del Perimetro
  */
 
@@ -55,7 +55,7 @@ function PerimetroTrian() {
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
             //Permite limpiar el canvas
-            canvas.width = canvas.width;
+            document.getElementById("Resultado").value = canvas.width;
         }
 
         if (Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)) {
@@ -64,6 +64,7 @@ function PerimetroTrian() {
             localStorage.setItem("Lado2", Lado2);
             localStorage.setItem("Lado3", Lado3);
             DibujarTriangulo(Lado1, Lado2, Lado3);
+            AnimarTriangulo();
         }
 
     }
@@ -71,7 +72,7 @@ function PerimetroTrian() {
 
 /**
  * Función que permite calcular el perímetro del Rectángulo
- * @method CalculodePerimetro
+ * @method PerimetroRec
  * @return {number} Resultado del Perimetro
  */
 
@@ -106,6 +107,7 @@ function PerimetroRec() {
             localStorage.setItem("Base", Base);
             localStorage.setItem("Altura", Altura);
             DibujarRectangulo(Base, Altura);
+            AnimarRectangulo();
         }
 
     }
@@ -113,7 +115,7 @@ function PerimetroRec() {
 
 /**
  * Función que permite calcular el perímetro del Cuadrado
- * @method CalculodePerimetro
+ * @method PerimetroCuad
  * @return {number} Resultado del Perimetro
  */
 
@@ -140,6 +142,7 @@ function PerimetroCuad() {
             document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Cuadrado").value, 4 * Lado);
             localStorage.setItem("Lado", Lado);
             DibujarCuadrado(Lado);
+            AnimarCuadrado();
         }
 
     }
@@ -147,7 +150,7 @@ function PerimetroCuad() {
 
 /**
  * Función que permite calcular el perímetro del Círculo
- * @method CalculodePerimetro
+ * @method PerimetroCirc
  * @return {number} Resultado del Perimetro
  */
 function PerimetroCirc() {
@@ -173,6 +176,7 @@ function PerimetroCirc() {
             document.getElementById("Resultado").value = 2 * Math.PI * Radio;
             localStorage.setItem("Radio", Radio);
             DibujarCirculo(Radio);
+
         }
 
     }
@@ -190,14 +194,21 @@ function PerimetroCirc() {
 function CambiarUnidades(valor, Resultado) {
     console.log(valor);
     console.log(Resultado);
+    if(valor===undefined){
+        document.getElementById("Resultado").value = Resultado + "Metros";
+        canvas.width = canvas.width;
+    }
     if (valor === "Metros" || valor === undefined) {
         document.getElementById("Resultado").value = Resultado + "Metros";
+        canvas.width = canvas.width;
     }
     if (valor === "Centímetros") {
         document.getElementById("Resultado").value = Resultado + " Centímetros";
+        canvas.width = canvas.width;
     }
     if (valor === "Milímetros") {
         document.getElementById("Resultado").value = Resultado + " Milímetros";
+        canvas.width = canvas.width;
     }
     return Resultado;
 }
@@ -232,11 +243,11 @@ function DibujarTriangulo(lado1, lado2, lado3) {
 
     // Calcular los ángulos del triángulo
     let angulo1 = Math.acos((lado2 * lado2 + lado3 * lado3 - lado1 * lado1) / (2 * lado2 * lado3));
-    let angulo2 = Math.acos((lado1 * lado1 + lado3 * lado3 - lado2 * lado2) / (2 * lado1 * lado3));
+
 
     // Convertir los ángulos de radianes a grados
     angulo1 = angulo1 * (180 / Math.PI);
-    angulo2 = angulo2 * (180 / Math.PI);
+
 
     // Establecer el tamaño del canvas
     canvas.width = lado1 + lado2 + lado3;
@@ -322,4 +333,35 @@ function DibujarCirculo(radio) {
     ctx.fill();
     ctx.stroke();
 }
-
+/**
+ * Función que permite animar un triángulo según la longitud de su Base y Altura
+ * @method AnimarTriangulo
+ * @return {canvas} dibujo de la figura geométrica
+ */
+function AnimarTriangulo(){
+    setInterval(DibujarTriangulo,1000);
+}
+/**
+ * Función que permite animar un rectángulo según la longitud de su Base y Altura
+ * @method AnimarRectangulo
+ * @return {canvas} dibujo de la figura geométrica
+ */
+function AnimarRectangulo(){
+    setInterval(DibujarRectangulo,1000);
+}
+/**
+ * Función que permite animar un círculo según la longitud de su Radio
+ * @method AnimarCirculo
+ * @return {canvas} dibujo de la figura geométrica
+ */
+function AnimarCirculo(){
+    setInterval(DibujarCirculo, 1000);
+}
+/**
+ * Función que permite animar un cuadrado según la longitud de su Lado
+ * @method AnimarCuadrado
+ * @return {canvas} dibujo de la figura geométrica
+ */
+function AnimarCuadrado(){
+    setInterval(DibujarCuadrado, 1000);
+}
