@@ -44,8 +44,9 @@ function PerimetroTrian() {
             document.Formulario.Lado1.value = "";
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
-            //Permite limpiar el canvas
-            canvas.width = canvas.width;
+
+
+
         }
 
 
@@ -56,6 +57,7 @@ function PerimetroTrian() {
             document.Formulario.Lado3.value = "";
             //Permite limpiar el canvas
             document.getElementById("Resultado").value = canvas.width;
+            document.getElementById("Resultado").value = "";
         }
 
         if (Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)) {
@@ -176,6 +178,7 @@ function PerimetroCirc() {
             document.getElementById("Resultado").value = 2 * Math.PI * Radio;
             localStorage.setItem("Radio", Radio);
             DibujarCirculo(Radio);
+            AnimarCirculo();
 
         }
 
@@ -194,21 +197,20 @@ function PerimetroCirc() {
 function CambiarUnidades(valor, Resultado) {
     console.log(valor);
     console.log(Resultado);
-    if(valor===undefined){
-        document.getElementById("Resultado").value = Resultado + "Metros";
-        canvas.width = canvas.width;
-    }
+
     if (valor === "Metros" || valor === undefined) {
-        document.getElementById("Resultado").value = Resultado + "Metros";
         canvas.width = canvas.width;
+        document.getElementById("Resultado").value = Resultado + " Metros";
     }
     if (valor === "Centímetros") {
-        document.getElementById("Resultado").value = Resultado + " Centímetros";
         canvas.width = canvas.width;
+        document.getElementById("Resultado").value = Resultado + " Centímetros";
+
     }
     if (valor === "Milímetros") {
-        document.getElementById("Resultado").value = Resultado + " Milímetros";
         canvas.width = canvas.width;
+        document.getElementById("Resultado").value = Resultado + " Milímetros";
+
     }
     return Resultado;
 }
@@ -234,7 +236,7 @@ function DibujarTriangulo(lado1, lado2, lado3) {
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
             console.log("Los lados ingresados no forman un triángulo válido.");
-
+            document.getElementById("Resultado").value = "";
             return;
         }
 
@@ -321,6 +323,7 @@ function DibujarCirculo(radio) {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
+
     // Establecer el tamaño del canvas
     canvas.width = radio * 2;
     canvas.height = radio * 2;
@@ -334,34 +337,60 @@ function DibujarCirculo(radio) {
     ctx.stroke();
 }
 /**
- * Función que permite animar un triángulo según la longitud de su Base y Altura
+ * Función que permite animar un triángulo según la longitud de sus lados
  * @method AnimarTriangulo
  * @return {canvas} dibujo de la figura geométrica
  */
+x=0;
+dx=2;
 function AnimarTriangulo(){
-    setInterval(DibujarTriangulo,1000);
+    ctx.beginPath();
+    ctx.moveTo(x, 100);
+    ctx.lineTo(lado1, 100);
+    ctx.lineTo(lado2 * Math.cos(angulo1 * (Math.PI / 180)), lado2 * Math.sin(angulo1 * (Math.PI / 180)));
+    ctx.closePath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#bc57d5";
+    ctx.stroke();
+
+    if (x>canvas.width){
+        x=0;
+    }
+    x+=dx;
 }
 /**
  * Función que permite animar un rectángulo según la longitud de su Base y Altura
  * @method AnimarRectangulo
  * @return {canvas} dibujo de la figura geométrica
  */
+x=0;
 function AnimarRectangulo(){
     setInterval(DibujarRectangulo,1000);
+    if (x>canvas.width){
+        x=0;
+    }
 }
 /**
  * Función que permite animar un círculo según la longitud de su Radio
  * @method AnimarCirculo
  * @return {canvas} dibujo de la figura geométrica
  */
+x=0;
 function AnimarCirculo(){
     setInterval(DibujarCirculo, 1000);
+    if (x>canvas.width){
+        x=0;
+    }
 }
 /**
  * Función que permite animar un cuadrado según la longitud de su Lado
  * @method AnimarCuadrado
  * @return {canvas} dibujo de la figura geométrica
  */
+x=0;
 function AnimarCuadrado(){
     setInterval(DibujarCuadrado, 1000);
+    if (x>canvas.width){
+        x=0;
+    }
 }
