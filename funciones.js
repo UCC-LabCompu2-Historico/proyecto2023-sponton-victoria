@@ -5,6 +5,8 @@
  * @return
  */
 function mostrar_ocultar(valor) {
+    const canvas=document.getElementById("canvas");
+    canvas.width=canvas.width;
     document.getElementById("perimetro_Triangulo").style.display = "none";
     document.getElementById("perimetro_Cuadrado").style.display = "none";
     document.getElementById("perimetro_Rectangulo").style.display = "none";
@@ -59,7 +61,8 @@ function PerimetroTrian() {
         }
 
         if (Lado1 > 0 && Lado2 > 0 && Lado3 > 0 && !isNaN(Lado1) && !isNaN(Lado2) && !isNaN(Lado3)) {
-            document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Triangulo").value, Lado1 + Lado2 + Lado3);
+            let unit =document.getElementById("InsertarDatos").value;
+            document.getElementById("Resultado").value = `${Lado1 + Lado2 + Lado3} ${unit}`;
             DibujarTriangulo(Lado1, Lado2, Lado3);
 
         }
@@ -259,7 +262,7 @@ function DibujarTriangulo(lado1, lado2, lado3) {
  */
 
 escaladorRec=1;
-function DibujarRectangulo() {
+function DibujarRectangulo(base,altura) {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d")
     const margen = 50;
