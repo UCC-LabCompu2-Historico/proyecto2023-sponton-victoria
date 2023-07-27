@@ -139,7 +139,7 @@ function PerimetroCuad() {
             canvas.width = canvas.width;
         }
         if (Lado > 0 && !isNaN(Lado)) {
-            document.getElementById("Resultado").value = CambiarUnidades(document.getElementById("perimetro_Cuadrado").value, 4 * Lado);
+            document.getElementById("Resultado").value = `${4 * Lado} ${unit}`;
             DibujarCuadrado(Lado);
 
         }
@@ -206,18 +206,19 @@ function CambiarUnidades(valor, Resultado) {
 }
 
 /**
- * Función que permite dibujar un triángulo según la longitud de sus tres lados
+ * Función que permite  un triángulo según la longitud de sus tres lados
  * @method DibujarTriangulo
  * @param Lado1 - Lado 1 ingresado por el usuario
  * @param Lado2 - Lado 2 por el usuario
  * @param Lado3- Lado 3 por el usuario
  * @return {canvas} dibujo de la figura geométrica
  */
-Posicionx = 0;
+ escaladorTrian = 1;
 
 function DibujarTriangulo(lado1, lado2, lado3) {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+
     if (lado1 && lado2 && lado3) {
         // Verificar si los lados forman un triángulo válido
         if (lado1 + lado2 <= lado3 || lado1 + lado3 <= lado2 || lado2 + lado3 <= lado1) {
@@ -229,27 +230,31 @@ function DibujarTriangulo(lado1, lado2, lado3) {
             document.getElementById("Resultado").value = "";
             return;
         }
-
     }
-
 
     // Calcular los ángulos del triángulo
     let angulo1 = Math.acos((lado2 * lado2 + lado3 * lado3 - lado1 * lado1) / (2 * lado2 * lado3));
 
-
     // Convertir los ángulos de radianes a grados
     angulo1 = angulo1 * (180 / Math.PI);
 
+    // Dibujar el triángulo gradualmente utilizando animación
+    if (escaladorTrian <= 100) {
+        canvas.width = canvas.width;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(lado1 * (escaladorTrian / 100), 0);
+        ctx.lineTo(lado2 * Math.cos(angulo1 * (Math.PI / 180)), lado2 * Math.sin(angulo1 * (Math.PI / 180)) * (escaladorTrian / 100));
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#bc57d5";
+        ctx.stroke();
 
-    // Dibujar el triángulo
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(lado1, 0);
-    ctx.lineTo(lado2 * Math.cos(angulo1 * (Math.PI / 180)), lado2 * Math.sin(angulo1 * (Math.PI / 180)));
-    ctx.closePath();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#bc57d5";
-    ctx.stroke();
+        escaladorTrian += 1;
+        requestAnimationFrame(() => DibujarTriangulo(lado1, lado2, lado3));
+    } else {
+        escaladorTrian = 0;
+    }
 }
 
 
@@ -268,7 +273,7 @@ function DibujarRectangulo(base,altura) {
     const margen = 50;
     canvas.width = canvas.width;
     ctx.fillStyle = "#bc57d5";
-    ctx.fillRect(margen, margen, escaladorRec * base, escalador * altura);
+    ctx.fillRect(margen, margen, escaladorRec * base, escaladorRec * altura);
 
     if (escaladorRec <= 100) {
         escaladorRec += 1;
@@ -284,19 +289,24 @@ function DibujarRectangulo(base,altura) {
  * @param Lado - El lado ingresado por el usuario
  * @return {canvas} dibujo de la figura geométrica
  */
+escaladorCuad = 1;
+
 function DibujarCuadrado(Lado) {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     const margen = 50;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#bc57d5";
-    ctx.fillRect(Posicionx, 0 + margen, 100 * Lado, 100 * Lado);
-    Posicionx = Posicionx + 10;
-    if (Posicionx > canvas.width) {
-        Posicionx = 0;
-    }
+    ctx.fillRect(margen, margen, escaladorCuad * Lado, escaladorCuad * Lado);
 
+    if (escaladorCuad <= 100) {
+        escaladorCuad += 1;
+        requestAnimationFrame(() => DibujarCuadrado(Lado));
+    } else {
+        escaladorCuad = 1;
+    }
 }
+
 
 /**
  * Función que permite dibujar un círculo según la longitud de su Radio
