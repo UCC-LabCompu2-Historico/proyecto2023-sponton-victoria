@@ -202,7 +202,7 @@ function CambiarUnidades(valor, Resultado) {
 }
 
 /**
- * Función que permite  un triángulo según la longitud de sus tres lados
+ * Función que permite dibujar un triángulo según la longitud de sus tres lados
  * @method DibujarTriangulo
  * @param Lado1 - lado 1 ingresado por el usuario
  * @param Lado2 - lado 2 por el usuario
@@ -230,8 +230,13 @@ function DibujarTriangulo(lado1, lado2, lado3) {
             document.getElementById("Resultado").value = "";
             return;
         }
-    }
 
+    }
+    if (lado1 > 680 || lado2 > 680 || lado3 > 680) {
+        // Muestra un mensaje indicando que los valores son muy grandes
+        alert("Los valores son muy grandes, no se puede realizar la figura.")
+        return;
+    }
     // Calcular los ángulos del triángulo
     let angulo1 = Math.acos(
         (lado2 * lado2 + lado3 * lado3 - lado1 * lado1) / (2 * lado2 * lado3)
@@ -285,6 +290,11 @@ function DibujarRectangulo(base, altura) {
             return;
         }
     }
+    if (base > 680 || altura > 600) {
+        // Muestra un mensaje indicando que los valores son muy grandes
+        alert("Los valores son muy grandes, no se puede realizar la figura.")
+        return;
+    }
 
     if (escaladorRec <= 100) {
         canvas.width = canvas.width;
@@ -328,6 +338,11 @@ function DibujarCuadrado(lado) {
             return;
         }
     }
+    if (lado>600) {
+        // Muestra un mensaje indicando que los valores son muy grandes
+        alert("El valor es muy grande, no se puede realizar la figura.")
+        return;
+    }
 
     if (escaladorCuad <= 100) {
         canvas.width = canvas.width;
@@ -368,6 +383,11 @@ function DibujarCirculo(Radio) {
             document.getElementById("Resultado").value = "";
             return;
         }
+    }
+    if (Radio>300) {
+        // Muestra un mensaje indicando que los valores son muy grandes
+        alert("El valor es muy grande, no se puede realizar la figura.")
+        return;
     }
     /*
 
