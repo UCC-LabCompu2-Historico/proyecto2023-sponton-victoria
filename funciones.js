@@ -30,10 +30,12 @@ function mostrar_ocultar(valor) {
 
 function PerimetroTrian() {
     let Lado1, Lado2, Lado3;
-
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
     Lado1 = document.getElementById("Lado1").value;
     Lado2 = document.getElementById("Lado2").value;
     Lado3 = document.getElementById("Lado3").value;
+    const resultado = document.getElementById("Resultado");
 
     if (document.getElementById("Triangulo").checked) {
         Lado1 = Number(Lado1.replace(",", "."));
@@ -41,20 +43,25 @@ function PerimetroTrian() {
         Lado3 = Number(Lado3.replace(",", "."));
 
         if (Lado1 < 0 || Lado2 < 0 || Lado3 < 0) {
+
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Lado1.value = "";
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            resultado.value = "";
         }
 
         if (isNaN(Lado1) || isNaN(Lado2) || isNaN(Lado3)) {
+
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.Lado1.value = "";
             document.Formulario.Lado2.value = "";
             document.Formulario.Lado3.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            document.getElementById("Resultado").value = "";
+            resultado.value = "";
         }
 
         if (
@@ -80,6 +87,9 @@ function PerimetroTrian() {
 
 function PerimetroRec() {
     let Base, Altura;
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const resultado = document.getElementById("Resultado");
 
     Base = document.getElementById("Base").value;
     Altura = document.getElementById("Altura").value;
@@ -92,6 +102,7 @@ function PerimetroRec() {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Base.value = "";
             document.Formulario.Altura.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
@@ -100,6 +111,7 @@ function PerimetroRec() {
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.Base.value = "";
             document.Formulario.Altura.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
@@ -121,6 +133,9 @@ function PerimetroRec() {
 
 function PerimetroCuad() {
     let lado;
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const resultado = document.getElementById("Resultado");
     lado = document.getElementById("lado").value;
     lado = Number(lado.replace(",", "."));
 
@@ -128,12 +143,14 @@ function PerimetroCuad() {
         if (lado < 0) {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.lado.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             canvas.width = canvas.width;
         }
         if (isNaN(lado)) {
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.lado.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             canvas.width = canvas.width;
         }
@@ -152,7 +169,9 @@ function PerimetroCuad() {
  */
 function PerimetroCirc() {
     let Radio;
-
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const resultado = document.getElementById("Resultado");
     Radio = document.getElementById("Radio").value;
     Radio = Number(Radio.replace(",", "."));
 
@@ -160,17 +179,20 @@ function PerimetroCirc() {
         if (Radio < 0) {
             alert("Se ingresó un valor incorrecto");
             document.Formulario.Radio.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             canvas.width = canvas.width;
         }
         if (isNaN(Radio)) {
             alert("Se ingresó un valor incorrecto.Deben ser numeros");
             document.Formulario.Radio.value = "";
+            resultado.value = "";
             //Permite limpiar el canvas
             canvas.width = canvas.width;
         }
         if (Radio > 0 && !isNaN(Radio)) {
-            document.getElementById("Resultado").value = (2 * Math.PI * Radio).toFixed(2);
+            let unit = document.getElementById("InsertarDatos").value;
+            document.getElementById("Resultado").value = `${(2 * Math.PI * Radio).toFixed(2)} ${unit}`;
             DibujarCirculo(Radio);
         }
     }
