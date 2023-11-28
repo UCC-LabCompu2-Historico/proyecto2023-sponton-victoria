@@ -66,9 +66,7 @@ function PerimetroTrian() {
             !isNaN(Lado3)
         ) {
             let unit = document.getElementById("InsertarDatos").value;
-            document.getElementById("Resultado").value = `${
-                Lado1 + Lado2 + Lado3
-            } ${unit}`;
+            document.getElementById("Resultado").value = `${(Lado1 + Lado2 + Lado3).toFixed(2)} ${unit}`;
             DibujarTriangulo(Lado1, Lado2, Lado3);
         }
     }
@@ -108,7 +106,7 @@ function PerimetroRec() {
 
         if (Base > 0 && Altura > 0 && !isNaN(Base) && !isNaN(Altura)) {
             let unit = document.getElementById("InsertarDatos").value;
-            let resultado = 2 * Base + 2 * Altura;
+            let resultado = (2 * Base + 2 * Altura).toFixed(2);
             document.getElementById("Resultado").value = `${resultado} ${unit}`;
             DibujarRectangulo(Base, Altura);
         }
@@ -141,7 +139,7 @@ function PerimetroCuad() {
         }
         if (lado > 0 && !isNaN(lado)) {
             let unit = document.getElementById("InsertarDatos").value;
-            document.getElementById("Resultado").value = `${4 * lado} ${unit}`;
+            document.getElementById("Resultado").value = `${(4 * lado).toFixed(2)} ${unit}`;
             DibujarCuadrado(lado);
         }
     }
@@ -172,7 +170,7 @@ function PerimetroCirc() {
             canvas.width = canvas.width;
         }
         if (Radio > 0 && !isNaN(Radio)) {
-            document.getElementById("Resultado").value = 2 * Math.PI * Radio;
+            document.getElementById("Resultado").value = (2 * Math.PI * Radio).toFixed(2);
             DibujarCirculo(Radio);
         }
     }
